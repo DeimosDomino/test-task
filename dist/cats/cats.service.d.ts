@@ -10,4 +10,5 @@ export declare class CatsService {
     create(createCatDto: CreateCatDto): Promise<void>;
     getByOptions(options: object): Promise<Cat[]>;
     update(id: number, updateCatDto: UpdateCatDto): Promise<void>;
+    deleteCat(id: number): Promise<void>;
 }

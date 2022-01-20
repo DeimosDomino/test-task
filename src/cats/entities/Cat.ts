@@ -19,7 +19,7 @@ export class Cat extends BaseEntity{
     age: number;
 
     @Column()
-    photo: string;
+    imgLink: string;
 
     @Column()
     price: number;

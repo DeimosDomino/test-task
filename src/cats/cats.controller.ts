@@ -28,10 +28,7 @@ export class CatsController {
     }
     @Post("create")
     async create(@Body() createCatDto: CreateCatDto) {
-        await this.catsService.create({
-            ...createCatDto,
-            isBooked: false
-        })
+        await this.catsService.create(createCatDto)
     }
 
 
@@ -51,8 +48,8 @@ export class CatsController {
     }
 
     @Delete(":id")
-    remove(@Param("id") id: string){
-        return `Remove ${id}`
+    async remove(@Param("id") id: number) {
+        await this.catsService.deleteCat(id)
     }
 
 

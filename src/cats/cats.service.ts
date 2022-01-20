@@ -33,4 +33,8 @@ export class CatsService {
         await this.catsRepository.update(id,updateCatDto)
     }
 
+    async deleteCat(id: number){
+        await this.catsRepository.delete(id)
+    }
+
 }

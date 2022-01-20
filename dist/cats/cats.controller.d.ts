@@ -12,5 +12,5 @@ export declare class CatsController {
     update(id: number, updateCatDto: UpdateCatDto): Promise<void>;
     bookCat(id: number): Promise<void>;
     unBookCat(id: number): Promise<void>;
-    remove(id: string): string;
+    remove(id: number): Promise<void>;
 }

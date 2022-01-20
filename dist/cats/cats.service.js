@@ -37,6 +37,9 @@ let CatsService = class CatsService {
     async update(id, updateCatDto) {
         await this.catsRepository.update(id, updateCatDto);
     }
+    async deleteCat(id) {
+        await this.catsRepository.delete(id);
+    }
 };
 CatsService = __decorate([
     (0, common_1.Injectable)(),

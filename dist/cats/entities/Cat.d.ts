@@ -5,7 +5,7 @@ export declare class Cat extends BaseEntity {
     color: string;
     breed: string;
     age: number;
-    photo: string;
+    imgLink: string;
     price: number;
     isBooked: boolean;
 }

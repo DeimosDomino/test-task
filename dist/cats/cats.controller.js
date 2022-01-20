@@ -34,7 +34,7 @@ let CatsController = class CatsController {
         return this.catsService.getById(id);
     }
     async create(createCatDto) {
-        await this.catsService.create(Object.assign(Object.assign({}, createCatDto), { isBooked: false }));
+        await this.catsService.create(createCatDto);
     }
     async update(id, updateCatDto) {
         await this.catsService.update(id, updateCatDto);
@@ -45,8 +45,8 @@ let CatsController = class CatsController {
     async unBookCat(id) {
         await this.catsService.update(id, { isBooked: false });
     }
-    remove(id) {
-        return `Remove ${id}`;
+    async remove(id) {
+        await this.catsService.deleteCat(id);
     }
 };
 __decorate([
@@ -107,8 +107,8 @@ __decorate([
     (0, common_1.Delete)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
 ], CatsController.prototype, "remove", null);
 CatsController = __decorate([
     (0, common_1.Controller)('cats'),
