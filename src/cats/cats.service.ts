@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import {CreateCatDto} from "./dto/create-cat.dto";
 import {Repository} from "typeorm";
-import {Cat} from "./entities/Cat";
+import {CatEntity} from "./entities/Cat.entity";
 import {InjectRepository} from "@nestjs/typeorm";
 import {UpdateCatDto} from "./dto/update-cat.dto";
 
@@ -9,8 +9,8 @@ import {UpdateCatDto} from "./dto/update-cat.dto";
 export class CatsService {
 
     constructor(
-        @InjectRepository(Cat)
-        private catsRepository: Repository<Cat>
+        @InjectRepository(CatEntity)
+        private catsRepository: Repository<CatEntity>
     ) {}
 
     getAll(){

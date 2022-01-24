@@ -1,0 +1,18 @@
+{
+   "type": "postgres",
+   "host": "localhost",
+   "port": 5432,
+   "username": "deimos",
+   "password": "123",
+   "database": "deimos",
+   "synchronize": false,
+   "entities": [
+      "dist/**/*.entity{.ts,.js}"
+   ],
+   "migrations": [
+      "src/migrations/*.ts"
+   ],
+   "cli": {
+      "migrationsDir": "migrations"
+   }
+}

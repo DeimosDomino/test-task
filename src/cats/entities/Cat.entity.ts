@@ -2,7 +2,7 @@ import {BaseEntity, Entity, Column, PrimaryColumn, PrimaryGeneratedColumn} from 
 
 
 @Entity("cats")
-export class Cat extends BaseEntity{
+export class CatEntity extends BaseEntity{
     @PrimaryGeneratedColumn()
     id: string
 
@@ -26,4 +26,7 @@ export class Cat extends BaseEntity{
 
     @Column()
     isBooked: boolean;
+
+    @Column({default: " ", nullable: true})
+    testcolumn: string
 }
