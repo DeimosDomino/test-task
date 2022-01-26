@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import {CreateCatDto} from "./dto/create-cat.dto";
 import {Repository} from "typeorm";
-import {CatEntity} from "./entities/Cat.entity";
+import {CatEntity} from "./entities/cat.entity";
 import {InjectRepository} from "@nestjs/typeorm";
 import {UpdateCatDto} from "./dto/update-cat.dto";
 
@@ -16,7 +16,7 @@ export class CatsService {
     getAll(){
         return this.catsRepository.find()
     }
-    getById(id: string){
+    getById(id: number){
         return this.catsRepository.findOne(id)
     }
 
