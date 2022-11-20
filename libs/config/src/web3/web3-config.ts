@@ -11,5 +11,5 @@ export const WEB3_CONFIG = {
     INFURA_WSS_ENDPOINT:
         process.env.INFURA_WSS_ENDPOINT ||
         'wss://mainnet.infura.io/ws/v3/ff194713efd1443c9704c3ccd2187ad0',
-    BLOCK_COUNT: parseInt(process.env.FIRST_BLOCK) || 1000,
+    BLOCK_COUNT: parseInt(process.env.BLOCK_COUNT) || 10000,
 };

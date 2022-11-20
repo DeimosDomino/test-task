@@ -1,7 +1,6 @@
 import { CONFIG } from '@libs/config';
-import 'reflect-metadata';
 import { Inject, Injectable } from '@nestjs/common';
-import { Event, OPTIONAL_EVENT, WEB3, Web3EventSubscriber } from '@libs/web3';
+import { Event, OPTIONAL_EVENT, Web3EventSubscriber } from '@libs/web3';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Transfer } from '@libs/domain';
 import { Repository } from 'typeorm';
@@ -20,7 +19,7 @@ export class TransferEventSubscriber {
     @Inject(TransferService) private readonly transferService: TransferService;
 
     /**
-     * Обработка события Transfer
+     * Обработка события Transfer(data)
      * @param event
      */
     @Event('Transfer', OPTIONAL_EVENT.DATA)
@@ -28,32 +27,11 @@ export class TransferEventSubscriber {
         await this.transferService.createTransfer(event);
     }
 
+    /**
+     * Обработка события Transfer(connected)
+     */
     @Event('Transfer', OPTIONAL_EVENT.CONNECTED)
     async init(): Promise<void> {
-        const contract = new WEB3.eth.Contract(
-            CONFIG.WEB3.ABI,
-            CONFIG.WEB3.CONTRACT_ADDRESS,
-        );
-        const lastBlock = await WEB3.eth.getBlockNumber();
-        let i;
-        for (
-            i = lastBlock - CONFIG.WEB3.BLOCK_COUNT;
-            i + 500 < lastBlock;
-            i += 500
-        ) {
-            const events: EventData[] = await contract.getPastEvents(
-                'Transfer',
-                {
-                    fromBlock: i,
-                    toBlock: i + 500,
-                },
-            );
-            await this.transferService.createTransfers(events);
-        }
-        const events: EventData[] = await contract.getPastEvents('Transfer', {
-            fromBlock: i,
-            toBlock: lastBlock,
-        });
-        await this.transferService.createTransfers(events);
+        await this.transferService.loadLastBlocks(CONFIG.WEB3.BLOCK_COUNT);
     }
 }

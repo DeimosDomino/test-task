@@ -14,8 +14,8 @@ export const Web3EventSubscriber = (config: Web3EventSubscriberConfig) => {
         return class extends target {
             constructor(...args) {
                 super(args);
-                const w3: Web3 = new web3(config.infura_endpoint);
-                const contract = new w3.eth.Contract(
+                const WEB3: Web3 = new web3(config.infura_endpoint);
+                const contract = new WEB3.eth.Contract(
                     config.abi,
                     config.contract_address,
                 );

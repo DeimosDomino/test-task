@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { EventFilter } from "../types/event-filter.type";
+import { Filter } from 'web3-eth-contract';
 
 export enum OPTIONAL_EVENT {
     DATA = 'data',
@@ -18,7 +18,7 @@ export enum OPTIONAL_EVENT {
 export const Event = (
     contractEvent: string,
     optionalEvent: OPTIONAL_EVENT,
-    options?: EventFilter,
+    options?: Filter,
 ) => {
     return (
         target: any,
